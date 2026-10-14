@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forge Athletic Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B1D18;--surf:#12291F;--surf2:#1A3629;--brass:#C9A45C;--brass2:#E4C98B;--bone:#EFE8D8;--mute:#8CA297;--line:rgba(239,232,216,.1);
+--head:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--body:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
+*,*:before,*:after{box-sizing:inherit;margin:0}
+body{background:var(--bg);color:var(--bone);font:400 15px/1.5 var(--body);padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));-webkit-tap-highlight-color:transparent}
+main{max-width:560px;margin:0 auto;padding:0 18px}
+.tab{display:none}.tab.on{display:block}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0 6px}
+.logo{font:700 22px var(--head);letter-spacing:.06em;color:var(--brass)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--surf2);border:1px solid var(--brass);display:grid;place-items:center;font:600 16px var(--head);color:var(--brass2)}
+.hi{color:var(--mute);margin:14px 0 4px}
+.hero{background:linear-gradient(160deg,var(--surf2),var(--surf));border:1px solid var(--line);border-radius:26px 26px 26px 6px;padding:22px 20px 20px;margin-top:6px;position:relative;overflow:hidden}
+.hero small{color:var(--mute)}
+.hero h1{font-size:92px;color:var(--brass2);margin:6px 0 2px;letter-spacing:-.01em}
+.hero p{color:var(--bone);opacity:.85;max-width:30ch}
+.row{display:flex;gap:10px;margin-top:16px}
+.btn{flex:1;border:0;border-radius:14px;padding:14px;font:700 15px var(--body);background:var(--brass);color:#1A1405;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card b.n{display:block;font:600 38px var(--head);color:var(--bone)}
+.card span.l{color:var(--mute);font-size:13px}
+.week{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:128px}
+.week div{flex:1;text-align:center;font-size:12px;color:var(--mute)}
+.week i{display:block;border-radius:8px 8px 3px 3px;background:var(--surf2);margin-bottom:6px}
+.week .d i{background:var(--brass)}
+h2{font-size:30px;margin:26px 0 12px}
+.facts{display:grid;gap:0;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;background:var(--surf);border-bottom:1px solid var(--line)}
+.facts div:last-child{border:0}.facts span{color:var(--mute)}.facts b{font-weight:600;text-align:right}
+.seg{display:flex;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:4px;margin:18px 0 12px}
+.seg button{flex:1;border:0;background:none;color:var(--mute);font:600 14px var(--body);padding:11px 8px;border-radius:999px;cursor:pointer}
+.seg button.on{background:var(--brass);color:#1A1405}
+.macro{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.macro div{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center}
+.macro b{display:block;font:600 24px var(--head);color:var(--brass2)}.macro span{font-size:11.5px;color:var(--mute)}
+.meal{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.meal time{font:600 15px var(--head);color:var(--brass);padding-top:2px}
+.meal h3{font:600 20px var(--head);margin-bottom:3px}.meal p{color:var(--mute);font-size:13.5px}
+.meal em{font-style:normal;text-align:right;font-size:13px;color:var(--mute)}.meal em b{display:block;color:var(--bone);font-size:15px}
+.note{margin-top:14px;padding:14px;border-left:3px solid var(--brass);background:var(--surf);border-radius:4px 14px 14px 4px;font-size:13.5px;color:var(--mute)}
+.days{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:0 0 auto;width:52px;padding:10px 0;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--mute);font:600 13px var(--body);cursor:pointer}
+.days button b{display:block;font:600 20px var(--head);color:var(--bone)}
+.days button.on{background:var(--brass);border-color:var(--brass)}.days button.on,.days button.on b{color:#1A1405}
+.dayhead h2{font-size:54px;margin:14px 0 2px;color:var(--brass2)}.dayhead p{color:var(--mute)}
+.ex{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 16px;margin-top:10px;background:var(--surf);border:1px solid var(--line);border-radius:16px}
+.ex h3{font:600 20px var(--head)}.ex p{font-size:12.5px;color:var(--mute);margin-top:2px}
+.ex .sr{font:600 22px var(--head);color:var(--brass2);white-space:nowrap}
+.rare{display:grid;gap:10px}
+.rare div{padding:16px;background:var(--surf);border:1px solid var(--line);border-radius:18px}
+.rare div:nth-child(odd){border-radius:18px 18px 18px 4px}.rare div:nth-child(even){border-radius:18px 18px 4px 18px}
+.rare h3{font-size:22px;margin-bottom:4px}.rare p{color:var(--mute);font-size:13.5px}.rare span{display:inline-block;margin-top:8px;font-size:12px;color:var(--brass2);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.plans{display:grid;gap:10px}
+.plan{display:flex;justify-content:space-between;align-items:center;padding:18px;border:1px solid var(--line);background:var(--surf);border-radius:18px}
+.plan h3{font-size:24px}.plan p{font-size:13px;color:var(--mute);margin-top:3px}.plan .pr{font:600 32px var(--head);text-align:right}.plan .pr small{display:block;font:500 12px var(--body);color:var(--mute)}
+.plan.best{background:linear-gradient(135deg,#2A4A36,var(--surf2));border-color:var(--brass)}
+.tag{display:inline-block;background:var(--brass);color:#1A1405;font:700 11px var(--body);padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(11,29,24,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
+nav div{max-width:560px;margin:0 auto;display:flex}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:600 12px var(--body);padding:6px 0;display:grid;justify-items:center;gap:3px;cursor:pointer}
+nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--brass2)}
+button:focus-visible{outline:2px solid var(--brass2);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:rise .7s ease-out both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+body{background:radial-gradient(120% 55% at 85% -8%,#21503C 0%,transparent 60%),radial-gradient(90% 45% at 0% 100%,#2B2411 0%,transparent 55%),var(--bg);background-attachment:fixed}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.06;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{position:relative;z-index:1}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;margin:0 -18px;padding:14px 18px 10px;background:linear-gradient(var(--bg) 60%,rgba(11,29,24,0));}
+.logo:after{content:'Athletic Club';font:500 12px var(--body);letter-spacing:.02em;color:var(--mute);margin-left:8px}
+h1,h2,h3{letter-spacing:-.005em}
+.card b.n,.macro b,.plan .pr,.ex .sr{font-variant-numeric:tabular-nums}
+.hero{background:radial-gradient(90% 120% at 100% 0%,rgba(201,164,92,.30),transparent 55%),linear-gradient(160deg,#22452F,#0F251C);border-color:rgba(201,164,92,.35);box-shadow:0 24px 50px -22px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.07)}
+.hero h1{background:linear-gradient(180deg,#F3DDA6,#B98D3E);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.ring{position:absolute;top:18px;right:18px;width:66px;height:66px;border-radius:50%;background:conic-gradient(var(--brass2) calc(var(--p)*1%),rgba(255,255,255,.1) 0);display:grid;place-items:center}
+.ring:before{content:'';position:absolute;inset:6px;border-radius:50%;background:#13301F}
+.ring b{position:relative;font:600 19px var(--head)}
+.btn{background:linear-gradient(180deg,#E2C487,#B98D3E);box-shadow:0 8px 20px -8px rgba(201,164,92,.6);transition:transform .15s}
+.btn:active,.ex:active,.meal:active{transform:scale(.97)}
+.btn.ghost{background:transparent;box-shadow:none}
+.card,.ex,.rare div,.plan,.macro div,.seg{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),var(--surf);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.plan.best{background:linear-gradient(135deg,rgba(201,164,92,.22),rgba(26,54,41,.9));box-shadow:0 14px 34px -18px rgba(201,164,92,.5)}
+.seg button.on,.days button.on{background:linear-gradient(180deg,#E2C487,#B98D3E)}
+.meal{cursor:pointer;transition:opacity .2s}.meal.ok{opacity:.4}.meal.ok h3{text-decoration:line-through}
+.ex{cursor:pointer;transition:opacity .2s,transform .15s}.ex.ok{opacity:.45;border-color:var(--brass)}.ex.ok h3{text-decoration:line-through}
+.prog{height:6px;border-radius:6px;background:var(--surf2);margin:14px 0 6px;overflow:hidden}.prog i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#B98D3E,#F3DDA6);transition:width .35s}
+.pt{font-size:12.5px;color:var(--mute)}
+nav{z-index:30;background:rgba(9,22,18,.88);box-shadow:0 -12px 30px -10px rgba(0,0,0,.6)}
+nav button.on:before{content:'';width:26px;height:3px;border-radius:3px;background:var(--brass2);margin-bottom:2px}
+#splash{position:fixed;inset:0;z-index:50;display:grid;place-content:center;justify-items:center;gap:10px;background:radial-gradient(80% 50% at 50% 40%,#21503C,var(--bg));transition:opacity .6s,visibility .6s}
+#splash.off{opacity:0;visibility:hidden}
+#splash b{font:700 68px var(--head);letter-spacing:.18em;margin-right:-.18em;background:linear-gradient(180deg,#F3DDA6,#B98D3E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#splash span{color:var(--mute);font-size:14px}
+#ob{position:fixed;inset:0;z-index:40;display:none;overflow:auto;padding:calc(30px + env(safe-area-inset-top,0px)) 20px calc(30px + env(safe-area-inset-bottom,0px));background:radial-gradient(90% 50% at 50% 0%,#21503C,var(--bg) 70%)}
+#ob.on{display:block}
+.obc{max-width:440px;margin:6vh auto 0}
+.obc h2{font-size:50px;margin:0 0 6px;color:var(--brass2)}
+.obc p{color:var(--mute);margin-bottom:24px}
+.obc label{display:block;font-size:13px;color:var(--mute);margin-bottom:14px}
+.obc input{display:block;width:100%;margin-top:6px;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--bone);font:500 16px var(--body)}
+.obc input:focus{outline:2px solid var(--brass);border-color:transparent}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.obc .err{color:#E8A08A;font-size:13px;min-height:20px;margin:0 0 10px}
+#wel{position:fixed;inset:0;z-index:60;display:grid;place-items:center;text-align:center;background:radial-gradient(80% 55% at 50% 45%,#2A5A43,#08140F);opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;overflow:hidden}
+#wel.play{opacity:1;visibility:visible}
+#wel i{position:absolute;left:50%;top:45%;width:60px;height:60px;margin:-30px;border-radius:50%;border:1.5px solid var(--brass);opacity:0}
+#wel.play i{animation:ping 2.8s ease-out infinite}
+#wel.play .r2{animation-delay:.7s}#wel.play .r3{animation-delay:1.4s}
+.wt{position:relative;padding:0 16px}
+#wel small{display:block;font:500 17px var(--body);color:var(--brass2);letter-spacing:.04em;opacity:0}
+#wel b{display:block;font:700 78px/1 var(--head);margin:12px 0;max-width:92vw;overflow-wrap:anywhere;background:linear-gradient(180deg,#F3DDA6,#B98D3E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:0}
+#wel span{display:block;color:var(--bone);opacity:0}
+#wel.play small{animation:up .8s .3s forwards}
+#wel.play b{animation:pop 1s .8s cubic-bezier(.2,1.4,.4,1) forwards}
+#wel.play span{animation:up .8s 1.7s forwards}
+@keyframes ping{0%{transform:scale(.4);opacity:.9}100%{transform:scale(9);opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.me{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.me .mr{text-align:right}.me .mr b{display:block;font:600 22px var(--head)}.me .mr span{display:block;font-size:12.5px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div id="splash"><b>FORGE</b><span>Train with intent</span></div>
+<div id="ob"><div class="obc"><h2>Let's set you up</h2><p>Tell us a little about you so your diet and workout fit.</p>
+<label>Name<input id="inName" placeholder="Your name" autocomplete="given-name"></label>
+<div class="g3"><label>Age<input id="inAge" type="number" inputmode="numeric" placeholder="22"></label><label>Weight (kg)<input id="inW" type="number" inputmode="decimal" placeholder="68"></label><label>Height (cm)<input id="inH" type="number" inputmode="numeric" placeholder="172"></label></div>
+<p class="err" id="err"></p><button class="btn" id="go" style="width:100%">Continue</button></div></div>
+<div id="wel"><i></i><i class="r2"></i><i class="r3"></i><div class="wt"><small id="wsm">Welcome</small><b id="wnm"></b><span>Your plan is ready. Let's train.</span></div></div>
+<main>
+
+<section class="tab on" id="home">
+  <div class="top"><span class="logo">FORGE</span><span class="av">A</span></div>
+  <p class="hi" id="hi">Good evening</p>
+  <div class="hero">
+    <div class="ring" style="--p:67"><b>4/6</b></div>
+    <small>Today's session · 62 min</small>
+    <h1>PUSH</h1>
+    <p>Chest, shoulders and triceps. Bench press leads, so warm up the shoulders first.</p>
+    <div class="row"><button class="btn" onclick="go('train',0)">Start workout</button><button class="btn ghost" onclick="go('train',0)">View plan</button></div>
+  </div>
+  <div class="stats">
+    <div class="card"><b class="n">12</b><span class="l">Day streak</span></div>
+    <div class="card"><b class="n">4 / 6</b><span class="l">Sessions this week</span></div>
+    <div class="card week" id="week"></div>
+    <div class="card me" id="me"></div>
+  </div>
+  <h2>The gym</h2>
+  <div class="facts">
+    <div><span>Open</span><b>5 am to 11 pm, Sunday 7 am to 1 pm</b></div>
+    <div><span>Floor</span><b>8,500 sq ft, air-conditioned</b></div>
+    <div><span>Trainers</span><b>10 certified, on the floor all day</b></div>
+    <div><span>Also inside</span><b>Locker, steam room, protein bar</b></div>
+    <div><span>Entry age</span><b>15 and above</b></div>
+  </div>
+  <h2>Membership</h2>
+  <div class="plans" id="plans"></div>
+  <p class="note">Sample prices. Replace them with your gym's real rates before sharing.</p>
+</section>
+
+<section class="tab" id="eat">
+  <div class="top"><span class="logo">FORGE</span><span class="av">A</span></div>
+  <h2 style="font-size:44px;margin-top:18px">Diet plans</h2>
+  <div class="seg" id="dseg"><button class="on">Muscle gain</button><button>Lean cut</button></div>
+  <div class="macro" id="macro"></div>
+  <div id="meals"></div>
+  <p class="note">Vegetarian? Swap chicken or fish for paneer, soya chunks or tofu at the same weight, and eggs for 200 g curd or paneer bhurji. Drink 3 to 4 litres of water daily.</p>
+</section>
+
+<section class="tab" id="train">
+  <div class="top"><span class="logo">FORGE</span><span class="av">A</span></div>
+  <h2 style="font-size:44px;margin-top:18px">Trainer's split</h2>
+  <div class="days" id="days"></div>
+  <div class="dayhead" id="dayhead"></div>
+  <div class="prog"><i id="pbar"></i></div><p class="pt" id="ptxt"></p>
+  <div id="exs"></div>
+  <p class="note">Rest 90 to 120 seconds between heavy sets, 60 seconds on isolation work. Add a little weight once you hit the top of the rep range on every set.</p>
+</section>
+
+<section class="tab" id="gear">
+  <div class="top"><span class="logo">FORGE</span><span class="av">A</span></div>
+  <h2 style="font-size:44px;margin-top:18px">Rare equipment</h2>
+  <p style="color:var(--mute);margin-bottom:14px">Machines most gyms skip. Ask a trainer for a walkthrough before your first set.</p>
+  <div class="rare" id="rare"></div>
+</section>
+
+</main>
+
+<nav><div id="nav"></div></nav>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var icons={home:'<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',eat:'<path d="M7 3v8a3 3 0 0 0 6 0V3M10 3v18M18 3c-2 2-3 5-3 8h3v10"/>',train:'<path d="M3 9v6M6 6v12M18 6v12M21 9v6M6 12h12"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'};
+var names={home:'Home',eat:'Diet',train:'Workout',gear:'Equipment'};
+$('nav').innerHTML=Object.keys(names).map(function(k,i){return '<button data-t="'+k+'" class="'+(i?'':'on')+'"><svg viewBox="0 0 24 24">'+icons[k]+'</svg>'+names[k]+'</button>'}).join('');
+$('nav').onclick=function(e){var b=e.target.closest('button');if(b)go(b.dataset.t)};
+function go(t,d){document.querySelectorAll('.tab').forEach(function(s){s.classList.toggle('on',s.id===t)});
+document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});
+if(d!==undefined)day(d);window.scrollTo(0,0)}
+
+var wk=[['M',80,1],['T',64,1],['W',92,1],['T',20,0],['F',70,1],['S',0,0],['S',0,0]];
+$('week').innerHTML=wk.map(function(w){return '<div class="'+(w[2]?'d':'')+'"><i style="height:'+Math.max(w[1],10)+'px"></i>'+w[0]+'</div>'}).join('');
+
+var pl=[['1 month','Pay as you go','1,800','',0],['3 months','Save ₹600','4,800','₹1,600 a month',0],['6 months','Includes 2 trainer sessions','8,400','₹1,400 a month',1],['12 months','Includes diet review each quarter','14,400','₹1,200 a month',0]];
+$('plans').innerHTML=pl.map(function(p){return '<div class="plan'+(p[4]?' best':'')+'"><div><h3>'+p[0]+(p[4]?'<span class="tag">Most picked</span>':'')+'</h3><p>'+p[1]+'</p></div><div class="pr">₹'+p[2]+'<small>'+p[3]+'</small></div></div>'}).join('');
+
+var diets=[
+{m:[['3,000','kcal'],['190 g','protein'],['390 g','carbs'],['85 g','fat']],f:[
+['8:00','Breakfast','4 eggs scrambled, 2 multigrain toast, 1 glass milk','620','38 g'],
+['11:00','Mid-morning','Peanut butter banana shake, 30 g oats','480','22 g'],
+['1:30','Lunch','200 g chicken curry, 1.5 cups rice, dal, salad','780','55 g'],
+['5:00','Pre-workout','Banana, 6 soaked almonds, black coffee','220','6 g'],
+['7:45','Post-workout','1 scoop whey, 1 banana','250','27 g'],
+['9:30','Dinner','4 rotis, 150 g paneer or fish, sabzi, curd','650','40 g']]},
+{m:[['2,100','kcal'],['160 g','protein'],['190 g','carbs'],['60 g','fat']],f:[
+['8:00','Breakfast','3 egg whites and 1 egg bhurji, 1 roti, green tea','380','28 g'],
+['11:00','Mid-morning','200 g curd, 1 apple','190','14 g'],
+['1:30','Lunch','150 g grilled chicken or soya, 1 cup rice, dal, big salad','560','45 g'],
+['4:30','Snack','40 g roasted chana','100','7 g'],
+['6:00','Pre-workout','Banana, black coffee','120','2 g'],
+['7:45','Post-workout','1 scoop whey, 5 almonds','190','27 g'],
+['9:30','Dinner','150 g fish or paneer, 2 rotis, sauteed vegetables','560','38 g']]}];
+function diet(i){var d=diets[i];
+document.querySelectorAll('#dseg button').forEach(function(b,k){b.classList.toggle('on',k===i)});
+$('macro').innerHTML=d.m.map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
+$('meals').innerHTML=d.f.map(function(x){return '<div class="meal"><time>'+x[0]+'</time><div><h3>'+x[1]+'</h3><p>'+x[2]+'</p></div><em><b>'+x[3]+'</b>'+x[4]+'</em></div>'}).join('')}
+$('dseg').onclick=function(e){var b=e.target.closest('button');if(b)diet([].indexOf.call(b.parentNode.children,b))};
+$('meals').onclick=function(e){var m=e.target.closest('.meal');if(m)m.classList.toggle('ok')};
+diet(0);
+
+var plan=[
+['Mon','Push','Chest, shoulders, triceps',[['Barbell bench press','Flat bench, pause on chest','4 × 6–8'],['Incline dumbbell press','30 degree bench','3 × 8–10'],['Seated shoulder press','Dumbbells or machine','3 × 8–10'],['Cable lateral raise','Slow on the way down','3 × 12–15'],['Rope pushdown','Elbows pinned to sides','3 × 10–12'],['Overhead extension','Full stretch at the bottom','2 × 12']]],
+['Tue','Pull','Back and biceps',[['Deadlift','Reset every rep','3 × 5'],['Lat pulldown','Pull to upper chest','4 × 8–10'],['Chest-supported row','No swinging','3 × 8–10'],['Face pull','Rope at eye level','3 × 12–15'],['Barbell curl','Strict form','3 × 8–10'],['Hammer curl','Neutral grip','2 × 12']]],
+['Wed','Legs','Quads, hamstrings, calves',[['Back squat','Hit parallel or below','4 × 6–8'],['Romanian deadlift','Soft knees, long back','3 × 8–10'],['Leg press','Feet shoulder width','3 × 10–12'],['Walking lunge','Per leg','3 × 12'],['Lying leg curl','Control the lowering','3 × 12'],['Standing calf raise','Pause at the top','4 × 12–15']]],
+['Thu','Recover','Mobility and light cardio',[['Incline walk','Easy pace','20 min'],['Hip and shoulder mobility','Slow, controlled','10 min'],['Full body stretch','Hold each position','10 min']]],
+['Fri','Upper','Strength focus',[['Incline barbell press','Heavy top set first','4 × 6–8'],['Weighted pull-up','Full hang each rep','4 × 6–8'],['One-arm dumbbell row','Per side','3 × 10'],['Parallel bar dips','Lean forward slightly','3 × 8–12'],['Cable curl','Squeeze at the top','2 × 12'],['Skull crusher','EZ bar','2 × 10']]],
+['Sat','Lower','Glutes, quads and core',[['Front squat','Elbows high','3 × 6–8'],['Hip thrust','Pause for one second','4 × 8–10'],['Bulgarian split squat','Per leg','3 × 10'],['Hanging leg raise','No swinging','3 × 12'],['Plank','Ribs down','3 × 45 s']]],
+['Sun','Rest','Sleep well, eat on plan',[['Optional walk','Outdoors if possible','30 min']]]];
+$('days').innerHTML=plan.map(function(p,i){return '<button data-i="'+i+'"><b>'+(i+1)+'</b>'+p[0]+'</button>'}).join('');
+$('days').onclick=function(e){var b=e.target.closest('button');if(b)day(+b.dataset.i)};
+function day(i){var p=plan[i];
+document.querySelectorAll('#days button').forEach(function(b,k){b.classList.toggle('on',k===i)});
+$('dayhead').innerHTML='<h2>'+p[1]+'</h2><p>'+p[2]+'</p>';
+$('exs').innerHTML=p[3].map(function(x,j){return '<div class="ex'+(done[i+'-'+j]?' ok':'')+'" data-k="'+i+'-'+j+'"><div><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div><span class="sr">'+x[2]+'</span></div>'}).join('');cur=i;prog()}
+var done={},cur=0;
+function prog(){var n=plan[cur][3].length,c=0;for(var j=0;j<n;j++)if(done[cur+'-'+j])c++;$('pbar').style.width=(c/n*100)+'%';$('ptxt').textContent=c+' of '+n+' done. Tap an exercise to tick it off.'}
+$('exs').onclick=function(e){var r=e.target.closest('.ex');if(!r)return;var k=r.dataset.k;done[k]=!done[k];r.classList.toggle('ok');prog()};
+day(0);
+
+var rare=[['Belt squat machine','Loads your legs through a belt on the hips, so your spine carries nothing.','Heavy legs, sore back'],
+['Reverse hyper','Swings the legs behind you to build glutes and hamstrings and ease the lower back.','Back health'],
+['Prowler sled','Push it across the floor for conditioning with almost no muscle soreness.','Power and stamina'],
+['Safety squat bar','Padded yoke sits on the shoulders, which suits stiff shoulders and wrists.','Squat variation'],
+['Trap bar','Hex frame lets you stand inside it, so deadlifts feel safer and more natural.','Beginner deadlift'],
+['Glute-ham developer','Trains hamstrings and lower back together through a full range.','Hamstrings'],
+['Landmine station','A bar pivoting from the floor for angled presses and rotational core work.','Shoulder friendly'],
+['Tibialis bar','Strengthens the shin muscle, which helps knees and ankles hold up under load.','Knee care']];
+$('rare').innerHTML=rare.map(function(r){return '<div><h3>'+r[0]+'</h3><p>'+r[1]+'</p><span>'+r[2]+'</span></div>'}).join('');
+var KEY='forgeProfile';
+function ld(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
+function sv(p){try{localStorage.setItem(KEY,JSON.stringify(p))}catch(e){}}
+function apply(p){var h=new Date().getHours(),g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+$('hi').textContent=g+', '+p.n;
+document.querySelectorAll('.av').forEach(function(a){a.textContent=p.n.charAt(0).toUpperCase()});
+var m=p.h/100,b=p.w/(m*m),c=b<18.5?'Underweight':b<25?'Healthy range':b<30?'Above healthy range':'High';
+$('me').innerHTML='<div><b class="n">'+b.toFixed(1)+'</b><span class="l">BMI, '+c+'</span></div><div class="mr"><b>'+p.n+'</b><span>'+p.a+' yrs, '+p.w+' kg, '+p.h+' cm</span><span>Suggested diet: '+(b<22?'Muscle gain':'Lean cut')+'</span></div>';
+diet(b<22?0:1)}
+function wel(p,back){$('wsm').textContent=back?'Welcome back':'Welcome';$('wnm').textContent=p.n;var w=$('wel');w.classList.add('play');setTimeout(function(){w.classList.remove('play')},3800)}
+$('go').onclick=function(){var n=$('inName').value.trim(),a=+$('inAge').value,w=+$('inW').value,h=+$('inH').value,e=$('err');
+if(!n){e.textContent='Enter your name.';return}
+if(!(a>=15&&a<=70)){e.textContent='Enter an age between 15 and 70.';return}
+if(!(w>=30&&w<=250)){e.textContent='Enter your weight in kg, between 30 and 250.';return}
+if(!(h>=120&&h<=230)){e.textContent='Enter your height in cm, between 120 and 230.';return}
+var p={n:n,a:a,w:w,h:h};sv(p);apply(p);$('ob').classList.remove('on');wel(p,false)};
+setTimeout(function(){$('splash').classList.add('off');var p=ld();if(p&&p.n){apply(p);wel(p,true)}else{$('ob').classList.add('on')}},1300);
+</script>
+</body>
+</html>
